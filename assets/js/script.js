@@ -7,9 +7,9 @@ var button4 = document.querySelector("#button4");
 var startButton = document.getElementById("startButton");
 var timer = document.querySelector("#countdownTimer");
 var timerEl = document.querySelector("#timeLeft");
-var time = 45;
+var time = 5;
 var container = document.querySelector("#container");
-
+var container2 = document.querySelector("#container2");
 
 // global variables
 var countdownTimer;
@@ -20,14 +20,14 @@ var scoreBoard;
 // var quizComplete = "quiz complete" + display scoreBoard = "score";
 var initials;
 var questions;
-var endQuiz;
+
 
 // functions
 //starts quiz
 function startQuiz(){
   container.removeAttribute("class", "hidden");
   startButton.setAttribute("class", "hidden");
-  countdownTimer = setTimeout(countdown, 1000);
+  countdownTimer = setInterval(countdown, 1000);
   timerEl.textContent = time;
   showQuestion();
   console.log("you clicked");
@@ -43,13 +43,21 @@ function showQuestion(){
     // for each answer, create an li tag
 }
 
-//this function is what happens when the start button is clicked
+//This function ends the quiz
+function endQuiz(){
+  clearInterval(countdownTimer);
+  container.setAttribute("class", "hidden");
+  container2.removeAttribute("class", "hidden");
+}
 
 
 //this function is for the countdown timer 
 function countdown() {
     time --;
     timerEl.textContent = time;
+    if(time <= 0){
+      endQuiz();
+    }
 }
 
 
@@ -103,15 +111,3 @@ for( var i = 0; i < questions.length; i ++ ){
 startButton.onclick = startQuiz;
    
    
-
-//need event listener for when they choose an answer
-//need function for incorrect answer and decreasing timer
-
-//need functions for the answer selection in the multChoiceBox
-
-
-//this function is for the finished quiz message
-
-
-// this function is for the initials input box
-
