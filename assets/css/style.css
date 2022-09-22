@@ -17,13 +17,17 @@ h1 {
     font-size: 60px;
 }
 
+
 /* This is the card style  */
 .card {
     text-align: center;
     display: flex;
-    flex-direction:column
+    flex-direction:column;
 }
 
+.hidden {
+    display: none;
+}
 
 /* This is the button style */
 #button1, #button2, #button3, #button4 {

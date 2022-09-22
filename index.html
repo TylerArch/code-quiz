@@ -13,15 +13,18 @@
       <header>
         <h1>Coding Quiz</h1>
       </header>
-      <div class="card">
+      <button id="startButton" class="btn">Start The Quiz</button>
+      <div class="card hidden" id = "container">
         <div class="card-header">
           <h2>Question</h2>
         </div>
-        <button id="button1">A</button>
-        <button id="button2">B</button>
-        <button id="button3">C</button>
-        <button id="button4">D</button</>
-        <button id="startButton" class="btn">Start The Quiz</button>
+          <button id="button1">A</button>
+          <button id="button2">B</button>
+          <button id="button3">C</button>
+          <button id="button4">D</button>
+        <div>
+          <timer id="countdownTimer"> Time Left: <span id = "timeLeft">0</span></timer>
+        </div>
       </div>
       <footer id="footer">
         <h2>Made with ❤️️ by Tyler Arch</h2>
@@ -30,6 +33,6 @@
         </p>
     </footer>
     </div>
-    <!-- <script src="./assets/js/script.js"></script> -->
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>

@@ -1,57 +1,61 @@
 // assignment code
-console.log(this);
+// DOM Elements
+var button1 = document.querySelector("#button1");
+var button2 = document.querySelector("#button2");
+var button3 = document.querySelector("#button3");
+var button4 = document.querySelector("#button4");
+var startButton = document.getElementById("startButton");
+var timer = document.querySelector("#countdownTimer");
+var timerEl = document.querySelector("#timeLeft");
+var time = 45;
+var container = document.querySelector("#container");
+
 
 // global variables
-var startButton;
 var countdownTimer;
 var multChoiceBox;
-var button = document.querySelector('button');
-var answer1;
-var answer2;
-var answer3;
-var answer4;
+var answers;
 var wrongAnswer;
-var scoreBoard();
-var quizComplete = "quiz complete" + display scoreBoard = "score";
-var initials();
+var scoreBoard;
+// var quizComplete = "quiz complete" + display scoreBoard = "score";
+var initials;
+var questions;
+var endQuiz;
 
-function showAQuestion(){
+// functions
+//starts quiz
+function startQuiz(){
+  container.removeAttribute("class", "hidden");
+  startButton.setAttribute("class", "hidden");
+  countdownTimer = setTimeout(countdown, 1000);
+  timerEl.textContent = time;
+  showQuestion();
+  console.log("you clicked");
+}
+
+
+function showQuestion(){
     // figure which item to get from the array whenever this function is called
     var currQuestionObj = questions[i]
     var section = document.createElement("section");
     // create an h2 tag, give it the text of the question
     // create a ul tag 
     // for each answer, create an li tag
-
-// functions
-//this function is what happens when the start button is clicked
-var generateBtn = document.querySelector("#startButton");
-
-generateBtn.addEventListener("click", startQuiz);
-//need an event listener
 }
+
+//this function is what happens when the start button is clicked
+
 
 //this function is for the countdown timer 
 function countdown() {
-    countdownTimer = setTimeout(countdown, 100000);
+    time --;
+    timerEl.textContent = time;
 }
 
 
 
 var currentScore = 0;
 var secondsRemaining = 120;
-
-function showAQuestion(){
-  // figure which item to get from the array whenever this function is called
-  var currQuestionObj = questions[i]
-  var section = document.createElement("section");
-  // create an h2 tag, give it the text of the question
-  // create a ul tag 
-  // for each answer, create an li tag
-
-  // add all this stuff to the DOM
-}
-
 
 // When the user clicks start, what needs to happen:
    // Timer starts 
@@ -82,6 +86,7 @@ var questions = [
   }
 ]
 
+//This is the function for getting questions
 for( var i = 0; i < questions.length; i ++ ){
   var currQuestionObj = questions[i]
   var section = document.createElement("section");
@@ -95,7 +100,10 @@ for( var i = 0; i < questions.length; i ++ ){
 
 // event listeners
    // clicking the start button 
-   // when they choose an answer
+startButton.onclick = startQuiz;
+   
+   
+
 //need event listener for when they choose an answer
 //need function for incorrect answer and decreasing timer
 
