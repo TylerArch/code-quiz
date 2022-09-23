@@ -17,7 +17,7 @@ A final page will indicate your score for the quiz and a text box appears if you
 
 Here is a screenshot of the landing page:
 
-![Application Preview](https://github.com/TylerArch/password-generator/blob/main/Assets/images/landing-page-screenshot.png?raw=true)
+![Application Preview](https://github.com/TylerArch/04-code-quiz/blob/main/Assets/images/landing-page-screenshot.png?raw=true)
 
 Here is the link to the live webpage:
 
