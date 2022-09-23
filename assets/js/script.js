@@ -97,36 +97,36 @@ var questions = [
   },
 
   {
-    question: "Question 3",
+    question: "Local Storage stores which type of data?",
     answers: [
-      "A",
-      "B",
-      "C",
-      "D"
+      "arrays",
+      "integers",
+      "strings",
+      "pasta"
     ], 
-    correctAnswer: "A",
+    correctAnswer: "strings",
   },
 
   {
-    question: "Ummmmm",
+    question: "What is the proper syntax for calling a function?",
     answers: [
-      "true",
-      "false",
-      "none of the above",
-      "both of the above"
+      "function = (function)",
+      "(function)",
+      "function();",
+      "None of the above"
     ], 
-    correctAnswer: "both of the above",
+    correctAnswer: "function();",
   },
 
   {
-    question: "5",
+    question: "What method is used to detect a click on a button?",
     answers: [
-      "1",
-      "2",
-      "3",
-      "4"
+      "setAttribute",
+      "console.log",
+      "querySelectorAll",
+      "addEventListener"
     ], 
-    correctAnswer: "2",
+    correctAnswer: "addEventListener",
   }
 ]
 
