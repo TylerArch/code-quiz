@@ -62,7 +62,6 @@ function endQuiz(){
   getScores();  
 }
 
-
 //this function is for the countdown timer 
 function countdown() {
   time --;
@@ -181,6 +180,7 @@ function getScores() {
   scoresText.textContent = currentScore;
 }
 
+//This function launches the quiz
 startButton.onclick = startQuiz;
    
    
