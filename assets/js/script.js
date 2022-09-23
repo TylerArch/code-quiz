@@ -7,19 +7,27 @@ var button4 = document.querySelector("#button4");
 var startButton = document.getElementById("startButton");
 var timer = document.querySelector("#countdownTimer");
 var timerEl = document.querySelector("#timeLeft");
-var time = 5;
+var time = 25;
 var container = document.querySelector("#container");
 var container2 = document.querySelector("#container2");
+var container3 = document.querySelector("#container3");
+var container4 = document.querySelector("#container4");
+var h2 = document.querySelector("h2");
+var ul = document.querySelector("ul");
+var submitButton = document.querySelector("#submitButton");
 
 // global variables
 var countdownTimer;
 var multChoiceBox;
 var answers;
 var wrongAnswer;
-var scoreBoard;
-// var quizComplete = "quiz complete" + display scoreBoard = "score";
+var currentScore = 0;
 var initials;
 var questions;
+var currentQuestion = 0;
+var arrayOfScores;
+
+
 
 
 // functions
@@ -29,18 +37,19 @@ function startQuiz(){
   startButton.setAttribute("class", "hidden");
   countdownTimer = setInterval(countdown, 1000);
   timerEl.textContent = time;
-  showQuestion();
-  console.log("you clicked");
+  showQuestion(currentQuestion);
 }
 
-
-function showQuestion(){
-    // figure which item to get from the array whenever this function is called
-    var currQuestionObj = questions[i]
-    var section = document.createElement("section");
-    // create an h2 tag, give it the text of the question
-    // create a ul tag 
-    // for each answer, create an li tag
+//This function displays the current question and answer choices
+function showQuestion(i){
+    var currQuestionObj = questions[currentQuestion];
+    h2.textContent = currQuestionObj.question;
+    button1.textContent = currQuestionObj.answers[0];
+    button2.textContent = currQuestionObj.answers[1];
+    button3.textContent = currQuestionObj.answers[2];
+    button4.textContent = currQuestionObj.answers[3];
+    //event listener for button click goes here
+    ul.addEventListener("click", questionAnswer);
 }
 
 //This function ends the quiz
@@ -48,66 +57,130 @@ function endQuiz(){
   clearInterval(countdownTimer);
   container.setAttribute("class", "hidden");
   container2.removeAttribute("class", "hidden");
+  container3.removeAttribute("class", "hidden");
+  submitButton.addEventListener("click", writeScores);
+  getScores();  
 }
 
 
 //this function is for the countdown timer 
 function countdown() {
-    time --;
-    timerEl.textContent = time;
-    if(time <= 0){
-      endQuiz();
-    }
+  time --;
+  timerEl.textContent = time;
+  if(time <= 0){
+  endQuiz();
+  }
 }
 
-
-
-var currentScore = 0;
-var secondsRemaining = 120;
-
-// When the user clicks start, what needs to happen:
-   // Timer starts 
-   // Display a question
-     // showAQuestion()
-
-
-
+//These are the questions and answer choices
 var questions = [
   {
-    question: "How can Gary be such an amazing teacher?",
+    question: "How do you reference a class in JavaScript?",
     answers: [
-      "He really isn't.",
-      "Why can't Katy teach the class?",
-      "Can we get our money back?",
-      "He's too damn old"
-    ]
+      ".class",
+      "#class",
+      "[class]]",
+      "{class}"
+    ],
+    correctAnswer: ".class",
   },
   
   {
-    question: "How can Gary be such an amazing teacher?",
+    question: "How do you reference an ID in JavaScript",
     answers: [
-      "He really isn't.",
-      "Why can't Katy teach the class?",
-      "Can we get our money back?",
-      "He's too damn old"
-    ]
+      ".id",
+      "#id",
+      "[id]",
+      "{id}"
+    ], 
+    correctAnswer: "#id",
+  },
+
+  {
+    question: "Question 3",
+    answers: [
+      "A",
+      "B",
+      "C",
+      "D"
+    ], 
+    correctAnswer: "A",
+  },
+
+  {
+    question: "Ummmmm",
+    answers: [
+      "true",
+      "false",
+      "none of the above",
+      "both of the above"
+    ], 
+    correctAnswer: "both of the above",
+  },
+
+  {
+    question: "5",
+    answers: [
+      "1",
+      "2",
+      "3",
+      "4"
+    ], 
+    correctAnswer: "2",
   }
 ]
 
-//This is the function for getting questions
-for( var i = 0; i < questions.length; i ++ ){
-  var currQuestionObj = questions[i]
-  var section = document.createElement("section");
-  // create an h2 tag, give it the text of the question
-  // create a ul tag 
-  // for each answer, create an li tag
-
-  // add all this stuff to the DOM
+//get what I have from local storage and push new score to array
+//get score function from local storage to print to page
+function writeScores() {
+  var initials = document.querySelector("textarea").value;
+  var scores = JSON.parse(localStorage.getItem(initials));
+  console.log(scores);
+  if (scores) {
+    scores.push(currentScore);
+    localStorage.setItem(initials, JSON.stringify(scores));
+  } else {
+    localStorage.setItem(initials, JSON.stringify([currentScore]));
+  }
+  container.setAttribute("class", "hidden");
+  container2.setAttribute("class", "hidden");
+  container3.setAttribute("class", "hidden");
+  container4.removeAttribute("class", "hidden");
+  scores = JSON.parse(localStorage.getItem(initials));
+  var h2 = document.querySelector(".initials");
+  h2.textContent = initials;
+  var scoresEl = document.querySelector(".scores");
+  for (var i = 0; i < scores.length; i++) {
+    var li = document.createElement("li")
+    li.textContent = scores[i];
+    scoresEl.appendChild(li);
+  }
 }
 
+//This function determies the events that occur in the case of a correct or incorrect answer
+//and terminates the quiz when no more questions remain
+function questionAnswer(event) {
+  if (questions[currentQuestion].correctAnswer == event.target.textContent) {
+    currentScore++;
+     alert ("Correct!")
+  }else{
+    time = time - 5;
+    alert ("Incorrect!")
+  }
+  currentQuestion++;
+  if (questions.length !== currentQuestion){
+    showQuestion(currentQuestion);
+  }else {
+    endQuiz();
+  }
+}
 
-// event listeners
-   // clicking the start button 
+//This function gets the current score
+function getScores() {
+  var scoresText = document.querySelector("#score");
+  scoresText.textContent = currentScore;
+}
+
 startButton.onclick = startQuiz;
    
    

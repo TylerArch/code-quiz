@@ -16,19 +16,34 @@
       <button id="startButton" class="btn">Start The Quiz</button>
       <div class="card hidden" id = "container">
         <div class="card-header">
-          <h2>Question</h2>
+          <h2 class = "h2">Question</h2>
         </div>
-          <button id="button1">A</button>
-          <button id="button2">B</button>
-          <button id="button3">C</button>
-          <button id="button4">D</button>
+          <ul class = "buttons">
+            <li><button id="button1">A</button></li>
+            <li><button id="button2">B</button></li>
+            <li><button id="button3">C</button></li>
+            <li><button id="button4">D</button></li>
+          </ul>
         <div>
           <timer id="countdownTimer"> Time Left: <span id = "timeLeft">0</span></timer>
         </div>
       </div>
       <div class = "container2 hidden" id = "container2">
-        <end id="endQuiz"> Quiz Complete</end>
-        <scoreBoard id="scoreBoard"> Score: <span"></end>
+        <div id="endQuiz"> Quiz Complete</div>
+        <div id="scoreBoard"> Score: <span id = "score"></span></div>
+      </div>
+      <div class = "container3 hidden" id = "container3">
+        <div id = "endQuiz">Enter Initials to save your score!</div>
+          <p><textarea id = "initials"></textarea></p>
+          <button id="submitButton">Submit</button></p>
+      </div>
+      <div class = "container4 hidden" id = "container4">
+        <div id="scoreBoard">
+          <h2 class = "initials"></h2>
+          <ul class = "scores"></ul>
+           
+          </ul>
+        </div>
       </div>
       <footer id="footer">
         <h2>Made with ❤️️ by Tyler Arch</h2>

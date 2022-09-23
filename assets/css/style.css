@@ -57,6 +57,16 @@ h1 {
 #container2 {
     color: red;
     border: 10px solid red;
+    border-radius: 6px;
+}
+
+#container3 {
+    color: red;
+    border: 10px solid red;
+    border-radius: 6px;
+}
+#countdownTimer {
+    font-size: 30px;
 }
 /* This is the footer style */
 #footer {
