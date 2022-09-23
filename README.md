@@ -1,6 +1,5 @@
 # 04 Web APIs: Code Quiz
 
-# 02 Password Generator
 
 ## Description
 The motivation for this project was to create a coding quiz to incorporate the new elements of JavaScript that I have learned. I incorporated loops, Event Listeners, Local Storage interaction, and dynamic object creation to accomplish this. I heavily expanded on my JavaScript funtionality and am very happy with the result.
